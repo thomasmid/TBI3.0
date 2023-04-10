@@ -22,7 +22,7 @@ for(s in 1:6){
 input <- read_excel("data_input_TBI3.0.xlsx", sheet = s+1)
 
 #check if there are input parameters in every data column
-if(all(colSums(input[,3:7])==0)){ #if no input parameters, skip
+if(all(colSums(input[,3:6])==0)){ #if no input parameters, skip
   next
   }else{ #if sheet has input parameters, execute loop
 input <- input[, colSums(input != 0, na.rm = TRUE) > 0]
@@ -90,10 +90,10 @@ Fig_results <- ggplot(TBI_results, aes(x = a, y = k, colour = site, shape = tea_
   geom_errorbar(aes(ymin = k - k_SE, ymax = k + k_SE), colour = "grey2", width = 0, alpha = 0.6)+
   geom_errorbar(aes(xmin = a - a_SE, xmax = a + a_SE), colour = "grey2", width = 0, alpha = 0.6)+
   geom_point(size = 5, stroke = 1, alpha = 0.8)+
-  theme_linedraw()+
+  theme_classic()+
   ggtitle("Modeled parameters of TBI 3.0: *a* and *k* with standard errors")+
   xlab("*a*")+
   ylab("*k*")+
   theme(plot.title = ggtext::element_markdown(), axis.title.y = ggtext::element_markdown(),axis.title.x = ggtext::element_markdown())+
   theme(legend.position = "bottom")
-ggsave(filename="results_TBI3.0.png",Fig_results, width = 8,height =6,dpi = 1200)
+ggsave(filename="results_TBI3.0.png",Fig_results, width = 8,height =6,dpi = 2000)
