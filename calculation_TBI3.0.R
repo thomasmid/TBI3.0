@@ -57,8 +57,8 @@ for(s in 1:6){
         function(duration){a * exp(-k*duration) + (1-a)}
       
       # define results
-      d30 <- TBI_function(30)
-      d60 <- TBI_function(60)
+      d20 <- TBI_function(20)
+      d40 <- TBI_function(40)
       d90 <- TBI_function(90)
       
       # get results
@@ -96,4 +96,4 @@ Fig_results <- ggplot(TBI_results, aes(x = a, y = k, colour = Site, shape = Tea_
   ylab("*k*")+
   theme(plot.title = ggtext::element_markdown(), axis.title.y = ggtext::element_markdown(),axis.title.x = ggtext::element_markdown())+
   theme(legend.position = "bottom")
-ggsave(filename="results_TBI3.0.png",Fig_results, width = 8,height =6,dpi = 2000)
+ggsave(filename="results_TBI3.0.png",Fig_results, width = 6,height =4,dpi = 2000)
